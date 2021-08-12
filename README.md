@@ -7,7 +7,7 @@ This is a third person game called 9Lives. The overall concept is that you are a
 ### Functionality & MVPs:
 
 In 9Lives, users will be able to:
-- Start and restart the game
+- Start and end the game using a start and end button
 - Move the character around the forest using arrow keys
 - Pick up and drop items using the space bar
 
