@@ -15,7 +15,7 @@ In 9Lives, users will be able to:
 - A help button that produces a dropdown textbox containing basic game functions
 - A dropdown list containing links to my information
 
-![Image](https://wireframe.cc/pro/pp/f272418c3463841)
+![Image](./Homepage.png)
 
 ### Technologies, Libraries, APIs:
 - three.js to render game animations
