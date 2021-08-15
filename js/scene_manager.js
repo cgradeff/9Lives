@@ -1,3 +1,5 @@
+import * as THREE from 'three';
+// this is what I'm having issues with
 
 // three js basic world set up
 function SceneManager(canvas) {
