@@ -1,15 +1,16 @@
-function SceneSubject(scene) {
-	
-	const radius = 2;
-	const mesh = new THREE.Mesh(new THREE.IcosahedronBufferGeometry(radius, 2), new THREE.MeshStandardMaterial({ flatShading: true }));
+import * as THREE from 'three';
 
-	mesh.position.set(0, 0, -20);
+export class GhostCat {
+	constructor(scene) {
+		this.scene = scene;
+		this.geometry = new THREE.BoxGeometry();
+		this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+		this.ghostCat = new THREE.Mesh( this.geometry, this.material );
+		this.place = this.place();
+	}
 
-	scene.add(mesh);
-	
-	this.update = function(time) {
-		const scale = Math.sin(time)+2;
-
-		mesh.scale.set(scale, scale, scale);
+	place() {
+		this.scene.add(this.ghostCat);
+		this.ghostCat.position.z = -1490;
 	}
 }

@@ -1,9 +1,10 @@
+// fix the update function
+
 import * as THREE from 'three';
-import Lights from './scene subjects/Lights'
-// this is what I'm having issues with
+// import {GhostCat} from './scene subjects/GhostCat';
+
 
 // three js basic world set up
-
 
 export class SceneManager {
     constructor(canvas) {
@@ -15,7 +16,11 @@ export class SceneManager {
         this.camera = this.buildCamera(this.screenDims);
         this.renderer = this.buildRenderer(this.screenDims);
         // this.subjects = this.createSceneSubjects(this.scene);
+        this.light = this.buildLights(this.scene);
         this.canvas = canvas;
+
+        //not sure why this isn't rendering
+        this.ghostCat = this.buildGhostCat(this.scene, this.camera);
     }
 
     buildScene() {
@@ -26,11 +31,17 @@ export class SceneManager {
     }
 
     buildCamera({width, height}) {
-        const aspectRatio = width / height;
-        const fieldOfView = 60;
-        const nearPlane = 1;
-        const farPlane = 100; 
-        const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
+        // const aspectRatio = width / height;
+        // const fieldOfView = 60;
+        // const nearPlane = 1;
+        // const farPlane = 100; 
+        // const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
+
+        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 2;
+        this.scene.add(camera);
 
         return camera;
     }
@@ -43,15 +54,34 @@ export class SceneManager {
         return renderer;
     }
 
-    createSceneSubjects(scene) {
-        const subjects = [ 
-            // new Lights(scene), // scene subject
-            // new GhostCat(scene), //list all scene subs here
-            // new Trees(scene)
-        ];
-        return subjects;
+    // createSceneSubjects(scene) {
+    //     // const subjects = [ 
+            
+    //     //     new GhostCat(scene) //list all scene subs here
+    //     //     // new Trees(scene)
+    //     // ];
+    //     const subjects = new GhostCat(scene);
+    //     return subjects;
+    // }
+
+    buildLights(scene) {
+        const light = new THREE.HemisphereLight(0x202020, 0x004080, 0.6);
+        scene.add(light);
+        return light;
     }
 
+    buildGhostCat(scene, camera) {
+        const geometry = new THREE.BoxGeometry();
+        const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+        const ghostCat = new THREE.Mesh( geometry, material );
+        scene.add( ghostCat );
+
+        camera.position.z = 5;
+        return ghostCat;
+    }
+
+// public methods to update the scene and resize the screen
+     // called by main at every frame 
     // update() {
     //     for (let i = 0; i < this.subjects.length; i++) {
     //         this.subjects[i].update();
@@ -60,6 +90,7 @@ export class SceneManager {
     //     this.renderer.render(this.scene, this.camera);
     // }
 
+ // updates the aspect ratio of the camera and the size of the Renderer,
     onWindowResize() {
         const { width, height } = this.canvas;
         this.screenDims.width = width;
@@ -69,70 +100,3 @@ export class SceneManager {
         this.renderer.setSize(width, height); 
     }
 }
-// function SceneManager(canvas) {
-//     const screenDims = {
-//         width: canvas.width,
-//         height: canvas.height
-//     }
-
-//     const scene = buildScene();
-//     const camera = buildCamera(screenDims);
-//     const renderer = buildRenderer(screenDims);
-//     const subjects = createSceneSubjects(scene);
-
-//     function buildScene() {
-//         const scene = new THREE.Scene();
-//         scene.background = new THREE.Color("#4287f5");
-
-//         return scene;
-//     }
-
-//     function buildCamera({width, height}) {
-//         const aspectRatio = width / height;
-//         const fieldOfView = 60;
-//         const nearPlane = 1;
-//         const farPlane = 100; 
-//         const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
-
-//         return camera;
-//     }
-
-//     function buildRenderer({width, height}) {
-//         const renderer = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true }); 
-//         renderer.setSize(width, height);
-
-//         return renderer;
-//     }
-
-//     // creates arr of scene subjects, need to add new subjects to this arr 
-//     function createSceneSubjects(scene) {
-//         const subjects = [ 
-//             new Lights(scene), // scene subject
-//             new GhostCat(scene), //list all scene subs here
-//             new Trees(scene)
-//         ];
-//         return subjects;
-//     }
-
-// // public methods to update the scene and resize the screen
-
-//     // called by main at every frame 
-//     this.update = function() {
-//         for (let i = 0; i < subjects.length; i++) {
-//             subjects[i].update();
-//         }
-            
-//         renderer.render(scene, camera);
-//     }
-
-//     // updates the aspect ratio of the camera and the size of the Renderer, called by main each time window is resized
-//     this.onWindowResize = function() {
-//         const { width, height } = canvas;
-//         screenDims.width = width;
-//         screenDims.height = height;
-//         camera.aspect = width / height;
-//         camera.updateProjectionMatrix(); // need func
-//         renderer.setSize(width, height); // need func
-//     }
-// }
-

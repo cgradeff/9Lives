@@ -1,3 +1,6 @@
+//fix the update function
+
+
 // import * as THREE from 'three';
 import {SceneManager} from './scripts/scene_manager.js'
 // set up for screenmanager
