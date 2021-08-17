@@ -7,25 +7,33 @@ import * as THREE from 'three';
 // three js basic world set up
 
 export class SceneManager {
-    constructor(canvas) {
+    constructor() {
         this.screenDims = {
-            width: canvas.width,
-            height: canvas.height
+            width: window.innerWidth,
+            height: window.innerHeight
         };
         this.scene = this.buildScene();
         this.camera = this.buildCamera(this.screenDims);
         this.renderer = this.buildRenderer(this.screenDims);
         // this.subjects = this.createSceneSubjects(this.scene);
         this.light = this.buildLights(this.scene);
-        this.canvas = canvas;
 
         //not sure why this isn't rendering
-        this.ghostCat = this.buildGhostCat(this.scene, this.camera);
+        this.ghostCat = this.buildGhostCat();
+        this.onWindowResize();
+        this.render();
+    }
+
+    // renders and updates the graphics
+    render() {
+        requestAnimationFrame(this.render.bind(this));
+        this.renderer.render(this.scene, this.camera)
+    // sceneManager.update();
     }
 
     buildScene() {
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0xff0000);
+        // scene.background = new THREE.Color(0xff0000);
 
         return scene;
     }
@@ -38,10 +46,10 @@ export class SceneManager {
         // const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
 
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 100);
-        camera.position.x = 0;
-        camera.position.y = 0;
-        camera.position.z = 2;
-        this.scene.add(camera);
+        // camera.position.x = 0;
+        // camera.position.y = 0;
+        // camera.position.z = 2;
+        // this.scene.add(camera);
 
         return camera;
     }
@@ -49,6 +57,7 @@ export class SceneManager {
     buildRenderer({width, height}) {
         const renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(width, height);
+        // debugger 
         document.body.appendChild(renderer.domElement);
 
         return renderer;
@@ -70,13 +79,13 @@ export class SceneManager {
         return light;
     }
 
-    buildGhostCat(scene, camera) {
+    buildGhostCat() {
         const geometry = new THREE.BoxGeometry();
         const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
         const ghostCat = new THREE.Mesh( geometry, material );
-        scene.add( ghostCat );
+        this.scene.add( ghostCat );
 
-        camera.position.z = 5;
+        this.camera.position.z = 5;
         return ghostCat;
     }
 
@@ -92,9 +101,7 @@ export class SceneManager {
 
  // updates the aspect ratio of the camera and the size of the Renderer,
     onWindowResize() {
-        const { width, height } = this.canvas;
-        this.screenDims.width = width;
-        this.screenDims.height = height;
+        const { width, height } = this.screenDims;
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix(); 
         this.renderer.setSize(width, height); 
