@@ -1,16 +1,20 @@
 import * as THREE from 'three';
 
 export class GhostCat {
-	constructor(scene) {
+	constructor(scene, camera) {
 		this.scene = scene;
+		this.camera = camera;
 		this.geometry = new THREE.BoxGeometry();
-		this.material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-		this.ghostCat = new THREE.Mesh( this.geometry, this.material );
-		this.place = this.place();
-	}
+        this.material = new THREE.MeshBasicMaterial( { color: "#bb37bf" } );
+        this.ghostCat = new THREE.Mesh( this.geometry, this.material );
+		this.buildGhostCat();
+	} 
 
-	place() {
-		this.scene.add(this.ghostCat);
-		this.ghostCat.position.z = -1490;
+	buildGhostCat() {
+ 		this.scene.add( this.ghostCat );
+
+        this.camera.position.z = 5;
+
+        return this.ghostCat;
 	}
 }
