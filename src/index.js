@@ -7,6 +7,10 @@ import {SceneManager} from './scripts/scene_manager.js'
 // const canvas = document.getElementById('world');
 new SceneManager();
 
+
+
+
+
 // document.addEventListener("DOMContentLoaded", () => {new SceneManager()});
 
 // handles dom events
