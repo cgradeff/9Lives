@@ -16,8 +16,8 @@ export class GhostCat {
         this.scene.add( ghostCat );
 
         this.camera.position.z = 5;
-		
 
 		return ghostCat;
 	}
+
 }

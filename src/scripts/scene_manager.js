@@ -7,21 +7,28 @@ import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Lights } from './scene subjects/Lights';
 
-
+// document.addEventListener("keydown", onDocumentKeyDown, false);
 // three js basic set up
 
 export class SceneManager {
+    
     constructor() {
         this.screenDims = {
             width: window.innerWidth,
             height: window.innerHeight
         };
+        // building scene and objects
         this.scene = this.buildScene();
         this.camera = this.buildCamera(this.screenDims);
         this.light = new Lights(this.scene);
         this.renderer = this.buildRenderer(this.screenDims);
-        this.subjects = this.createSceneSubjects();
-        // this.ghostCat = new GhostCat(this.scene, this.camera);
+        // this.subjects = this.createSceneSubjects();
+        this.ghostCat = new GhostCat(this.scene, this.camera);
+
+        //movement
+        this.keyInput();
+
+        // resize screen and render
         this.onWindowResize();
         this.render();
     }
@@ -30,8 +37,10 @@ export class SceneManager {
     render() {
         requestAnimationFrame(this.render.bind(this));
 
-        // this.ghostCat.rotation.x += 0.01;
-        // this.ghostCat.rotation.y += 0.01;
+        // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
+        // debugger 
+        this.ghostCat.ghostCat.rotation.x += 0.01;
+        this.ghostCat.ghostCat.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera)
     // sceneManager.update();
@@ -56,9 +65,9 @@ export class SceneManager {
         // camera.position.y = 0;
         // camera.position.z = 2;
         // this.scene.add(camera);
-        camera.position.z = 4;
-        camera.position.x = 0;
-        camera.position.y = 2;
+        camera.position.z = 2;
+        camera.position.x = 2;
+        camera.position.y = 1;
 
         return camera;
     }
@@ -73,23 +82,11 @@ export class SceneManager {
     }
 
     createSceneSubjects() {
-        const subjects = [ 
-            //list all scene subs here
-            new GhostCat(this.scene, this.camera)
-            // new Background(this.scene) 
-            // new Heart(this.scene, this.camera)
-            // new Trees(scene)
-        ];
+        const ghostCat = new GhostCat(this.scene, this.camera);
+        const background = new Background(this.scene);
+        const subjects = [ghostCat, background];
         return subjects;
     }
-
-    // buildLights() {
-    //     const light = new THREE.PointLight(0xffffff, 1, 1000);
-    //     this.scene.add(light);
-
-    //     light.position.set(0, 10, 0);
-    //     return light;
-    // }
 
 
 // need to change this to actually work
@@ -106,27 +103,34 @@ export class SceneManager {
         // this.update();
     }
 
-    // movement
+
+    keyInput() {
+        document.addEventListener('keydown', (e) => this.onKeyDown_(e), false);
+    }
+
+    onKeyDown_(event) {
+		const xSpeed = 0.5;
+		const ySpeed = 0.5;
+        // debugger
+        switch (event.keyCode) {
+            case 38:
+                this.ghostCat.ghostCat.position.y += ySpeed;
+                break;
+            case 40:
+                this.ghostCat.ghostCat.position.y -= ySpeed;
+                break;
+            case 37:
+                this.ghostCat.ghostCat.position.x -= xSpeed;
+                break;
+            case 39:
+                this.ghostCat.ghostCat.position.x += xSpeed;
+                break;
+            case 32:
+                this.ghostCat.ghostCat.position.set(0, 0, 0);
+                break;
+        }
+        this.render();
+    }
 
 
-    // onDocumentKeyDown(event) {
-    //     document.addEventListener("keydown", onDocumentKeyDown, false);
-
-    //     const xSpeed = 0.0001;
-    //     const ySpeed = 0.0001;
-
-    //     const keyCode = event.which;
-    //         if (keyCode == 87) {
-    //             cube.position.y += ySpeed;
-    //         } else if (keyCode == 83) {
-    //             cube.position.y -= ySpeed;
-    //         } else if (keyCode == 65) {
-    //             cube.position.x -= xSpeed;
-    //         } else if (keyCode == 68) {
-    //             cube.position.x += xSpeed;
-    //         } else if (keyCode == 32) {
-    //             cube.position.set(0, 0, 0);
-    //         }
-    //     this.render();
-    // };
 }

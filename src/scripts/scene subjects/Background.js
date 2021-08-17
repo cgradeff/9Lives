@@ -8,13 +8,14 @@ export class Background {
 	}
 
     create() {
-        const planeGeometry = new THREE.PlaneGeometry(30, window.innerHeight);
-        const groundMaterial = new THREE.MeshLambertMaterial({ color: "#ffe066" });
-        const ground = new THREE.Mesh(planeGeometry, groundMaterial);
+        const geometry = new THREE.PlaneGeometry( 1000, 1000, 1, 1 );
+        const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
+        const ground = new THREE.Mesh( geometry, material );
+        ground.material.side = THREE.DoubleSide;
         this.scene.add( ground );
 
-        ground.position.set(0, 0, 0);
-        // ground.rotation.x = -0.5*Math.PI;
+        ground.position.set(0, -10, -505);
+        ground.rotation.x = 90;
 
         return ground;
     }
