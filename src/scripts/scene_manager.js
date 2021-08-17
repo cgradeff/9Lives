@@ -1,13 +1,11 @@
 // fix the update function
 
 import * as THREE from 'three';
-// import { OrbitControls}
 import { GhostCat } from './scene subjects/GhostCat';
 import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Lights } from './scene subjects/Lights';
 
-// document.addEventListener("keydown", onDocumentKeyDown, false);
 // three js basic set up
 
 export class SceneManager {
@@ -17,13 +15,14 @@ export class SceneManager {
             width: window.innerWidth,
             height: window.innerHeight
         };
+
         // building scene and objects
         this.scene = this.buildScene();
         this.camera = this.buildCamera(this.screenDims);
         this.light = new Lights(this.scene);
         this.renderer = this.buildRenderer(this.screenDims);
-        // this.subjects = this.createSceneSubjects();
-        this.ghostCat = new GhostCat(this.scene, this.camera);
+        this.subjects = this.createSceneSubjects();
+        // this.ghostCat = new GhostCat(this.scene, this.camera);
 
         //movement
         this.keyInput();
@@ -39,11 +38,11 @@ export class SceneManager {
 
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
-        this.ghostCat.ghostCat.rotation.x += 0.01;
-        this.ghostCat.ghostCat.rotation.y += 0.01;
+        // this.subjects[0].ghostCat.rotation.x += 0.01;
+        // this.subjects[0].ghostCat.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera)
-    // sceneManager.update();
+        // sceneManager.update();
     }
 
     buildScene() {
@@ -54,17 +53,7 @@ export class SceneManager {
     }
 
     buildCamera({width, height}) {
-        // const aspectRatio = width / height;
-        // const fieldOfView = 60;
-        // const nearPlane = 1;
-        // const farPlane = 100; 
-        // const camera = new THREE.PerspectiveCamera(fieldOfView, aspectRatio, nearPlane, farPlane);
-
         const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        // camera.position.x = 0;
-        // camera.position.y = 0;
-        // camera.position.z = 2;
-        // this.scene.add(camera);
         camera.position.z = 2;
         camera.position.x = 2;
         camera.position.y = 1;
@@ -75,7 +64,7 @@ export class SceneManager {
     buildRenderer({width, height}) {
         const renderer = new THREE.WebGLRenderer({antialias: true});
         renderer.setSize(width, height);
-        // debugger 
+  
         document.body.appendChild(renderer.domElement);
 
         return renderer;
@@ -89,12 +78,12 @@ export class SceneManager {
     }
 
 
-// need to change this to actually work
+    // need to change this to actually work
     update() {  
         this.renderer.render(this.scene, this.camera);
     }
 
- // updates the aspect ratio of the camera and the size of the Renderer,
+    // updates the aspect ratio of the camera and the size of the Renderer,
     onWindowResize() {
         const { width, height } = this.screenDims;
         this.camera.aspect = width / height;
@@ -103,30 +92,30 @@ export class SceneManager {
         // this.update();
     }
 
-
+    // movement with key input
     keyInput() {
         document.addEventListener('keydown', (e) => this.onKeyDown_(e), false);
     }
 
     onKeyDown_(event) {
 		const xSpeed = 0.5;
-		const ySpeed = 0.5;
-        // debugger
+		const zSpeed = 0.5;
+
         switch (event.keyCode) {
-            case 38:
-                this.ghostCat.ghostCat.position.y += ySpeed;
+            case 40: // down arrow
+                this.subjects[0].ghostCat.position.z += zSpeed;
                 break;
-            case 40:
-                this.ghostCat.ghostCat.position.y -= ySpeed;
+            case 38: // up arrow
+                this.subjects[0].ghostCat.position.z -= zSpeed;
                 break;
-            case 37:
-                this.ghostCat.ghostCat.position.x -= xSpeed;
+            case 37: // right arrow
+                this.subjects[0].ghostCat.position.x -= xSpeed;
                 break;
-            case 39:
-                this.ghostCat.ghostCat.position.x += xSpeed;
+            case 39: // left arrow
+                this.subjects[0].ghostCat.position.x += xSpeed;
                 break;
-            case 32:
-                this.ghostCat.ghostCat.position.set(0, 0, 0);
+            case 32: // spacebar
+                this.subjects[0].ghostCat.position.set(0, 0, 0);
                 break;
         }
         this.render();
