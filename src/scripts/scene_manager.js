@@ -38,8 +38,8 @@ export class SceneManager {
 
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
-        this.subjects[2].heart.rotation.x += 0.01;
-        this.subjects[2].heart.rotation.y += 0.01;
+        // this.subjects[2].heart.rotation.x += 0.01;
+        // this.subjects[2].heart.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera)
         // sceneManager.update();
@@ -121,7 +121,7 @@ export class SceneManager {
                 break;
         }
         this.render();
-        this.pickupHeart();
+        // this.pickupHeart();
     }
 
     checkCollision() {
