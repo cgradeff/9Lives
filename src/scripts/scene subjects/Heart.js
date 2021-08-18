@@ -27,7 +27,10 @@ export class Heart {
 
     loadHeart() {
         this.loader.load( '../../../models/heart.obj', (object) => {
+            // const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
+            // const heart = 
             this.scene.add(object);
+            object.scale.multiplyScalar(0.005);
             object.position.set(3, 1, 0);
         });
     }

@@ -121,7 +121,7 @@ export class SceneManager {
                 break;
         }
         this.render();
-        // this.pickupHeart();
+        this.pickupHeart();
     }
 
     checkCollision() {
