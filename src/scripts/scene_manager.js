@@ -6,6 +6,8 @@ import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Lights } from './scene subjects/Lights';
 
+import { ThirdPersonCam } from './third_person_cam';
+
 // three js basic set up
 
 export class SceneManager {
@@ -22,6 +24,7 @@ export class SceneManager {
         this.light = new Lights(this.scene);
         this.renderer = this.buildRenderer(this.screenDims);
         this.subjects = this.createSceneSubjects();
+        this.thirdPersonCam = new ThirdPersonCam(this.camera, this.subjects[0].ghostCat);
         // this.ghostCat = new GhostCat(this.scene, this.camera);
 
         //movement
@@ -36,6 +39,7 @@ export class SceneManager {
     render() {
         requestAnimationFrame(this.render.bind(this));
 
+        this.thirdPersonCam.update();
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
         this.subjects[2].heart.rotation.x += 0.01;
@@ -53,10 +57,11 @@ export class SceneManager {
     }
 
     buildCamera({width, height}) {
-        const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10 );
-        camera.position.z = 1;
-        camera.position.x = 3;
-        camera.position.y = 2;
+        const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 1000 );
+        // camera.position.z = 1;
+        // camera.position.x = 3;
+        // camera.position.y = 2;
+        camera.position.set(3, 2, 1);
         // camera.lookAt( this.subjects[0].ghostCat.position );
 
         return camera;
@@ -104,16 +109,16 @@ export class SceneManager {
 		const zSpeed = 0.5;
 
         switch (event.keyCode) {
-            case 40: // down arrow
+            case 38: // down arrow
                 this.subjects[0].ghostCat.position.z += zSpeed;
                 break;
-            case 38: // up arrow
+            case 40: // up arrow
                 this.subjects[0].ghostCat.position.z -= zSpeed;
                 break;
-            case 37: // right arrow
+            case 39: // right arrow
                 this.subjects[0].ghostCat.position.x -= xSpeed;
                 break;
-            case 39: // left arrow
+            case 37: // left arrow
                 this.subjects[0].ghostCat.position.x += xSpeed;
                 break;
             case 32: // spacebar

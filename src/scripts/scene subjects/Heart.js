@@ -5,17 +5,6 @@ import * as THREE from 'three';
 
 
 export class Heart {
-    // constructor(scene, camera) {
-    //     this.scene = scene;
-    //     this.camera = camera;
-    //     this.loader = new GLTFLoader();
-    //     this.heart = this.create();
-    // }
-
-    // create() {
-
-    // }
-
     constructor(scene) {
         this.scene = scene;
         this.heart = this.create();
