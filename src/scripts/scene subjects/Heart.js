@@ -26,7 +26,7 @@ export class Heart {
     // }
 
     loadHeart() {
-        this.loader.load( 'models/heart.obj', (object) => {
+        this.loader.load( '../../../models/heart.obj', (object) => {
             this.scene.add(object);
             object.position.set(3, 1, 0);
         });
