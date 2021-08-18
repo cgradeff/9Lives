@@ -38,8 +38,8 @@ export class SceneManager {
 
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
-        // this.subjects[0].ghostCat.rotation.x += 0.01;
-        // this.subjects[0].ghostCat.rotation.y += 0.01;
+        this.subjects[2].heart.rotation.x += 0.01;
+        this.subjects[2].heart.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera)
         // sceneManager.update();
@@ -47,22 +47,23 @@ export class SceneManager {
 
     buildScene() {
         const scene = new THREE.Scene();
-        scene.background = new THREE.Color("rgb(143, 140, 219)");
+        // scene.background = new THREE.Color("rgb(143, 140, 219)");
 
         return scene;
     }
 
     buildCamera({width, height}) {
-        const camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-        camera.position.z = 2;
-        camera.position.x = 2;
-        camera.position.y = 1;
+        const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 10 );
+        camera.position.z = 1;
+        camera.position.x = 3;
+        camera.position.y = 2;
+        // camera.lookAt( this.subjects[0].ghostCat.position );
 
         return camera;
     }
 
     buildRenderer({width, height}) {
-        const renderer = new THREE.WebGLRenderer({antialias: true});
+        const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
         renderer.setSize(width, height);
   
         document.body.appendChild(renderer.domElement);
@@ -73,7 +74,8 @@ export class SceneManager {
     createSceneSubjects() {
         const ghostCat = new GhostCat(this.scene, this.camera);
         const background = new Background(this.scene);
-        const subjects = [ghostCat, background];
+        const heart = new Heart(this.scene);
+        const subjects = [ghostCat, background, heart];
         return subjects;
     }
 
@@ -89,7 +91,7 @@ export class SceneManager {
         this.camera.aspect = width / height;
         this.camera.updateProjectionMatrix(); 
         this.renderer.setSize(width, height); 
-        // this.update();
+        this.render();
     }
 
     // movement with key input
@@ -115,7 +117,7 @@ export class SceneManager {
                 this.subjects[0].ghostCat.position.x += xSpeed;
                 break;
             case 32: // spacebar
-                this.subjects[0].ghostCat.position.set(0, 0, 0);
+                this.subjects[0].ghostCat.position.set(0, 1, 0);
                 break;
         }
         this.render();

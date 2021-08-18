@@ -14,6 +14,7 @@ export class GhostCat {
         const material = new THREE.MeshLambertMaterial( { color: "#bb37bf"} );
         const ghostCat = new THREE.Mesh( geometry, material );
         this.scene.add( ghostCat );
+		ghostCat.position.set(0, 1, 0);
 
         this.camera.position.z = 5;
 

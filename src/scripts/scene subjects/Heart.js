@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 // import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 
 export class Heart {
@@ -16,16 +16,18 @@ export class Heart {
 
     // }
 
-    constructor(scene, camera) {
+    constructor(scene) {
         this.scene = scene;
-        this.camera = camera;
         this.heart = this.create();
     }
 
     create() {
-        const geometry = new THREE.SphereGeometry( 15, 32, 16 );
-        const material = new THREE.MeshBasicMaterial( { color: 0xffff00 } );
-        const sphere = new THREE.Mesh( geometry, material );
-        this.scene.add( sphere );
+        const geometry = new THREE.SphereGeometry( 0.5, 32, 16 );
+        const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
+        const heart = new THREE.Mesh( geometry, material );
+        this.scene.add( heart );
+        heart.position.set(0, 1, 1);
+
+        return heart;
     }
 }
