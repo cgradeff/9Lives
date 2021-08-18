@@ -10,13 +10,12 @@ export class GhostCat {
 	}
 
 	create() {
-		const geometry = new THREE.BoxGeometry();
+		const geometry = new THREE.BoxGeometry(2, 2, 2);
         const material = new THREE.MeshLambertMaterial( { color: "#bb37bf"} );
         const ghostCat = new THREE.Mesh( geometry, material );
+		ghostCat.castShadow = true;
         this.scene.add( ghostCat );
-		ghostCat.position.set(0, 1, 0);
-
-        this.camera.position.z = 5;
+		ghostCat.position.set(0, 2, 0);
 
 		return ghostCat;
 	}

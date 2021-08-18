@@ -42,8 +42,8 @@ export class SceneManager {
         this.thirdPersonCam.update();
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
-        this.subjects[2].heart.rotation.x += 0.01;
-        this.subjects[2].heart.rotation.y += 0.01;
+        // this.subjects[2].heart.rotation.x += 0.01;
+        // this.subjects[2].heart.rotation.y += 0.01;
 
         this.renderer.render(this.scene, this.camera)
         // sceneManager.update();
@@ -61,7 +61,7 @@ export class SceneManager {
         // camera.position.z = 1;
         // camera.position.x = 3;
         // camera.position.y = 2;
-        camera.position.set(3, 2, 1);
+        // camera.position.set(5, 1, 3);
         // camera.lookAt( this.subjects[0].ghostCat.position );
 
         return camera;
@@ -70,6 +70,8 @@ export class SceneManager {
     buildRenderer({width, height}) {
         const renderer = new THREE.WebGLRenderer({antialias: true, alpha: true});
         renderer.setSize(width, height);
+        renderer.shadowMap.enabled = true;
+        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
   
         document.body.appendChild(renderer.domElement);
 

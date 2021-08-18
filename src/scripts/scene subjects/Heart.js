@@ -11,11 +11,13 @@ export class Heart {
     }
 
     create() {
-        const geometry = new THREE.SphereGeometry( 0.5, 32, 16 );
+        const geometry = new THREE.SphereGeometry( 1, 32, 16 );
         const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
         const heart = new THREE.Mesh( geometry, material );
         this.scene.add( heart );
-        heart.position.set(3, 1, 0);
+        heart.position.set(3, 2, 0);
+        heart.castShadow = true;
+        heart.receiveShadow = false;
 
         return heart;
     }
