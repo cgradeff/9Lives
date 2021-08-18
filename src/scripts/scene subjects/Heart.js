@@ -26,7 +26,7 @@ export class Heart {
         const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
         const heart = new THREE.Mesh( geometry, material );
         this.scene.add( heart );
-        heart.position.set(0, 1, 1);
+        heart.position.set(3, 1, 0);
 
         return heart;
     }

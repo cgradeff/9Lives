@@ -121,7 +121,24 @@ export class SceneManager {
                 break;
         }
         this.render();
+        this.pickupHeart();
     }
 
+    checkCollision() {
+        const ghostCatPos = this.subjects[0].ghostCat.position;
+        const heartPos = this.subjects[2].heart.position;
 
+        if ((Math.round(ghostCatPos.x) === Math.round(heartPos.x)) && 
+            (Math.round(ghostCatPos.y) === Math.round(heartPos.y)) && 
+            (Math.round(ghostCatPos.z) === Math.round(heartPos.z))) {
+            return true;
+        }
+        return false;
+    }
+
+    pickupHeart() {
+        if (this.checkCollision()) {
+            this.scene.remove(this.subjects[2].heart);
+        }
+     }
 }
