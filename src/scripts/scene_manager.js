@@ -51,18 +51,17 @@ export class SceneManager {
 
     buildScene() {
         const scene = new THREE.Scene();
-        // scene.background = new THREE.Color("rgb(143, 140, 219)");
 
+        // comment these out to get rid of fog
+        // scene.background = new THREE.Color("#0a1226");
+        // scene.fog = new THREE.Fog('#0a1226', 3, 20);
+        
+        
         return scene;
     }
 
     buildCamera({width, height}) {
         const camera = new THREE.PerspectiveCamera(70, width / height, 0.01, 1000 );
-        // camera.position.z = 1;
-        // camera.position.x = 3;
-        // camera.position.y = 2;
-        // camera.position.set(5, 1, 3);
-        // camera.lookAt( this.subjects[0].ghostCat.position );
 
         return camera;
     }
