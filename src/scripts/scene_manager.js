@@ -5,7 +5,6 @@ import { GhostCat } from './scene subjects/GhostCat';
 import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Lights } from './scene subjects/Lights';
-
 import { ThirdPersonCam } from './third_person_cam';
 
 // three js basic set up
@@ -145,6 +144,10 @@ export class SceneManager {
     pickupHeart() {
         if (this.checkCollision()) {
             this.scene.remove(this.subjects[2].heart);
+            
+            // increment the heart count
+            let currentCount = document.getElementById("heartcount").innerHTML;
+            document.getElementById("heartcount").innerHTML = parseInt(currentCount) + 1;
         }
      }
 }

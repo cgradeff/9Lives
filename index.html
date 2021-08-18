@@ -12,6 +12,11 @@
 
 <body>
     <!-- <canvas id="world" height="700"></canvas> -->
+    <img id="heartpic" src="./heartpic.png">
+    <div id="heartcount">0</div>
+    <img id="title" src="./title1.png">
+    <!-- <i class="fab fa-github"></i> -->
+
     <script src="./dist/main.js"></script>
     <!-- <div id="loading">
         <div>
@@ -22,6 +27,31 @@
         </div>
     </div> -->
     <style>
+        i {
+            position: fixed;
+            height: 100px;
+
+        }
+        #heartcount {
+            position: fixed;
+            top: 5.5%;
+            left: 9%;
+            font-size: 250%;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+        }
+        #title {
+            height: 150px;
+            position: fixed;
+            top: 0px;
+            left: 40%;
+        }
+        #heartpic {
+            height: 70px;
+            position: fixed;
+            top: 3.5%;
+            left: 3%;
+        }
         body {
             background: url(Untitled_Artwork.png) no-repeat center center;
             background-size: cover;
