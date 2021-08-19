@@ -36,10 +36,9 @@ export class SceneManager {
     render() {
         requestAnimationFrame(this.render.bind(this));
 
-        // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
-        // debugger 
-        // this.subjects[2].heart.rotation.x += 0.01;
-        // this.subjects[2].heart.rotation.y += 0.01;
+        // error in console being called for the first two itterations of the loop cus heart isn't yet defined
+        this.subjects[2].heart.rotation.y += 0.02;
+        // debugger
 
         this.renderer.render(this.scene, this.camera)
         // sceneManager.update();

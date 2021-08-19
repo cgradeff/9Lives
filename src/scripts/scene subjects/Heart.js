@@ -1,9 +1,6 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-
-// import { heart } from '../../../models/heart.obj'
 
 
 export class Heart {
@@ -14,6 +11,7 @@ export class Heart {
         this.loader = new OBJLoader();
         this.loadHeart();
         this.heart;
+        // this.heart.material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
         // debugger
     }
 
@@ -27,16 +25,16 @@ export class Heart {
     //     return heart;
     // }
 
-    // need to bind and promise
+ 
     loadHeart() {
-        // let heart;
+
         this.loader.load( '../../../models/heart.obj', (object) => {
-            // const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
             this.scene.add(object);
             this.heart = object;
-
             object.scale.multiplyScalar(0.005);
             object.position.set(3, 1, 0);
+            // object.material = new THREE.MeshBasicMaterial();
+            // object.material.color = "#6da4d1";
             // debugger
         }); 
         // debugger
