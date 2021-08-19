@@ -12,7 +12,8 @@ export class Heart {
         this.scene = scene;
         // this.heart = this.create();
         this.loader = new OBJLoader();
-        this.heart = this.loadHeart();
+        this.loadHeart();
+        this.heart;
         // debugger
     }
 
@@ -28,18 +29,18 @@ export class Heart {
 
     // need to bind and promise
     loadHeart() {
-        let heart;
+        // let heart;
         this.loader.load( '../../../models/heart.obj', (object) => {
             // const material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
             this.scene.add(object);
-            heart = object;
+            this.heart = object;
 
-            heart.scale.multiplyScalar(0.005);
-            heart.position.set(3, 1, 0);
+            object.scale.multiplyScalar(0.005);
+            object.position.set(3, 1, 0);
             // debugger
         }); 
-        debugger
-        return heart;
+        // debugger
+        // return heart;
     }
 }
 
