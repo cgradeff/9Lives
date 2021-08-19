@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,12 +7,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="./dist/main.css" />
-    <script src="./dist/main.js"></script>
     <title>9Lives</title>
 </head>
 
 <body>
+    <div id="navbar">
+        <img id="heartpic" src="./img/heartpic.png">
+        <div id="heartcount">0</div>
+        <img id="title" src="./img/title1.png">
+        <a href="https://github.com/cgradeff/9Lives" target="_blank"><img id="github" src="./img/GitHub-Mark-Light-120px-plus.png"></a>
+    </div>
+
+    <script src="./dist/main.js"></script>
+    <!-- <div id="loading">
+        <div>
+            <div>...loading...</div>
+            <div class="progress">
+                <div id="progressbar"></div>
+            </div>
+        </div>
+    </div> -->
+    <style>
+        #github {
+            position: fixed;
+            height: 35px;
+            top: 6%;
+            right: 3.3%;
+        }
+        #heartcount {
+            position: fixed;
+            top: 5.8%;
+            left: 9.5%;
+            font-size: 250%;
+            font-family: 'Courier New', Courier, monospace;
+            color: white;
+            font-weight: bold;
+        }
+        #title {
+            height: 150px;
+            position: fixed;
+            top: 0px;
+            left: 40%;
+        }
+        #heartpic {
+            height: 70px;
+            position: fixed;
+            top: 3.5%;
+            left: 3%;
+        }
+        body {
+            background: url(img/background.png) no-repeat center center;
+            background-size: cover;
+        }
+
+    </style>
+    
 </body>
 
 </html>
-```
