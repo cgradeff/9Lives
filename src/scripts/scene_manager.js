@@ -38,7 +38,7 @@ export class SceneManager {
 
         // error in console being called for the first two itterations of the loop cus heart isn't yet defined
         // rotates faster each time the square moves
-        this.subjects[2].heart.rotation.y += 0.02;
+        // this.subjects[2].heart.rotation.y += 0.02;
         // debugger
 
         this.renderer.render(this.scene, this.camera)

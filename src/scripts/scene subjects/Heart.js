@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
-// import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 
 
 export class Heart {
@@ -8,11 +7,8 @@ export class Heart {
     constructor(scene) {
         this.scene = scene;
         // this.heart = this.create();
-        this.loader = new OBJLoader();
         this.loadHeart();
         this.heart;
-        // this.heart.material = new THREE.MeshLambertMaterial( { color: "#6da4d1" } );
-        // debugger
     }
 
     // create() {
@@ -27,18 +23,19 @@ export class Heart {
 
  
     loadHeart() {
+        let loader = new OBJLoader();
 
-        this.loader.load( '../../../models/heart.obj', (object) => {
+        loader.load( '../../../models/heart.obj', (object) => {
+            object.traverse( (child) => {
+                if (child instanceof THREE.Mesh) {
+                    child.material = new THREE.MeshPhongMaterial( { color: "#6da4d1"})
+                }
+            });
             this.scene.add(object);
             this.heart = object;
             object.scale.multiplyScalar(0.005);
             object.position.set(3, 1, 0);
-            // object.material = new THREE.MeshBasicMaterial();
-            // object.material.color = "#6da4d1";
-            // debugger
         }); 
-        // debugger
-        // return heart;
     }
 }
 
