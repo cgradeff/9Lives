@@ -137,8 +137,10 @@ export class SceneManager {
         const ghostCatPos = this.subjects[0].ghostCat.position;
         const heartPos = this.subjects[2].heart.position;
 
+        // debugger 
+
         if ((Math.round(ghostCatPos.x) === Math.round(heartPos.x)) && 
-            (Math.round(ghostCatPos.y) === Math.round(heartPos.y)) && 
+            // (Math.round(ghostCatPos.y) === Math.round(heartPos.y)) && 
             (Math.round(ghostCatPos.z) === Math.round(heartPos.z))) {
             return true;
         }

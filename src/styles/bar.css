@@ -1,8 +1,0 @@
-/* styling for navigation bar */
-
-#bar {
-    display: flex;
-    width: 10;
-    height: 60;
-    background-color: rgb(168, 86, 216);
-}
