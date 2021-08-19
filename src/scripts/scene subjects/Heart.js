@@ -32,10 +32,10 @@ export class Heart {
             });
             this.scene.add(object);
             this.heart = object;
-            object.scale.multiplyScalar(0.01);
+            object.scale.multiplyScalar(0.015);
             object.position.set(3, 1, 0);
-            // object.castShadow = true;
-            // object.receiveShadow = false;
+            object.castShadow = true;
+            object.receiveShadow = false;
         }); 
     }
 }

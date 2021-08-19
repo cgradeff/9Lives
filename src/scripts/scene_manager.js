@@ -28,6 +28,7 @@ export class SceneManager {
 
         //movement
         this.keyInput();
+        this.checkPickUp = false;
 
         // resize screen and render
         this.onWindowResize();
@@ -45,7 +46,7 @@ export class SceneManager {
         // this.subjects[2].heart.rotation.y += 0.01;
         // error in console being called for the first two itterations of the loop cus heart isn't yet defined
         // rotates faster each time the square moves
-        // this.subjects[2].heart.rotation.y += 0.02;
+        this.subjects[2].heart.rotation.y += 0.02;
         // debugger
 
         this.renderer.render(this.scene, this.camera)
@@ -126,7 +127,8 @@ export class SceneManager {
                 this.subjects[0].ghostCat.position.x += xSpeed;
                 break;
             case 32: // spacebar
-                this.subjects[0].ghostCat.position.set(0, 1, 0);
+                // this.subjects[0].ghostCat.position.set(0, 1, 0);
+                this.checkPickUp = true;
                 break;
         }
         this.render();
@@ -148,7 +150,7 @@ export class SceneManager {
     }
 
     pickupHeart() {
-        if (this.checkCollision()) {
+        if (this.checkCollision() && this.checkPickUp) {
             this.scene.remove(this.subjects[2].heart);
             
             // increment the heart count
