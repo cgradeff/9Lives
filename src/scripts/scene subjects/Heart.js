@@ -24,7 +24,7 @@ export class Heart {
     loadHeart() {
         let loader = new OBJLoader();
 
-        loader.load( '/models/heart.obj', (object) => {
+        loader.load( '/models/g.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
                     child.material = new THREE.MeshPhongMaterial( { color: "#6da4d1"})
