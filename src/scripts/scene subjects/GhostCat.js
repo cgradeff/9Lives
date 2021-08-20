@@ -1,12 +1,13 @@
 import * as THREE from 'three';
-// import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
+import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 // import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader.js';
 
 export class GhostCat {
-	constructor(scene, camera) {
+	constructor(scene) {
 		this.scene = scene;
-		this.camera = camera;
 		this.ghostCat = this.create();
+		// this.loadGhostCat();
+		// this.ghostCat;
 	}
 
 	create() {
@@ -19,5 +20,22 @@ export class GhostCat {
 
 		return ghostCat;
 	}
+
+	// loadGhostCat() {
+	// 	let loader = new OBJLoader();
+
+    //     loader.load( '../../../models/ghost1.obj', (object) => {
+    //         object.traverse( (child) => {
+    //             if (child instanceof THREE.Mesh) {
+    //                 child.material = new THREE.MeshPhongMaterial( { color: "#6da4d1"})
+	// 				child.castShadow = true;
+    //             }
+    //         });
+    //         this.scene.add(object);
+    //         this.ghostCat = object;
+    //         object.scale.multiplyScalar(0.015);
+    //         object.position.set(5, 1, 2);
+    //     }); 
+	// }
 
 }

@@ -82,7 +82,7 @@ export class SceneManager {
     }
 
     createSceneSubjects() {
-        const ghostCat = new GhostCat(this.scene, this.camera);
+        const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
         const heart = new Heart(this.scene);
         const subjects = [ghostCat, background, heart];
