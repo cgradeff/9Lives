@@ -1,5 +1,6 @@
 import * as THREE from 'three';
 
+
 export class ThirdPersonCam {
     constructor(camera, target) {
         this.camera = camera;
@@ -20,7 +21,7 @@ export class ThirdPersonCam {
         const idealLookAt = new THREE.Vector3(0, 10, 50);
         idealLookAt.applyQuaternion(this.target.quaternion); // need to define target and firgure out what rotation is 
         idealLookAt.add(this.target.position); // figure out setting pos
-        return idealLookAt;
+        return idealLookAt; 
     }
 
     update() {
