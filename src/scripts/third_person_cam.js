@@ -3,7 +3,7 @@ import * as THREE from 'three';
 export class ThirdPersonCam {
     constructor(camera, target) {
         this.camera = camera;
-        this.target = target; // need to set the larget to be ghosty
+        this.target = target; // need to set the target to be ghosty
         this.curretPos = new THREE.Vector3();
         this.currentLookAt = new THREE.Vector3();
     }
