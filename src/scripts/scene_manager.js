@@ -4,6 +4,7 @@ import * as THREE from 'three';
 import { GhostCat } from './scene subjects/GhostCat';
 import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
+import { Trees } from './scene subjects/Trees';
 import { Lights } from './scene subjects/Lights';
 import { ThirdPersonCam } from './third_person_cam';
 
@@ -23,6 +24,9 @@ export class SceneManager {
         this.light = new Lights(this.scene);
         this.renderer = this.buildRenderer(this.screenDims);
         this.subjects = this.createSceneSubjects();
+        // this.ghostCatObj = this.subjects[0]
+        // console.log(this.subjects[2])
+        // // this.ghostCat = this.ghostCatObj['ghostCat']
         this.thirdPersonCam = new ThirdPersonCam(this.camera, this.subjects[0].ghostCat);
         // this.ghostCat = new GhostCat(this.scene, this.camera);
 
@@ -85,7 +89,11 @@ export class SceneManager {
         const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
         const heart = new Heart(this.scene);
-        const subjects = [ghostCat, background, heart];
+        const trees1 = new Trees(this.scene, 1);
+        const trees2 = new Trees(this.scene, 2);
+        const trees3 = new Trees(this.scene, 3);
+        const trees4 = new Trees(this.scene, 4);
+        const subjects = [ghostCat, background, heart, trees1, trees2, trees3, trees4];
         return subjects;
     }
 

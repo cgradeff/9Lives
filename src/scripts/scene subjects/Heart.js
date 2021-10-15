@@ -27,14 +27,14 @@ export class Heart {
         loader.load( '../../../models/heart.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
-                    child.material = new THREE.MeshPhongMaterial( { color: "#6da4d1"})
+                    child.material = new THREE.MeshPhongMaterial( { color: "#FF6FEA"})
                     child.castShadow = true;
                 }
             });
             this.scene.add(object);
             this.heart = object;
             object.scale.multiplyScalar(0.015);
-            object.position.set(5, 1, 2);
+            object.position.set(12, 1, 25);
             // object.castShadow = true;
             // object.receiveShadow = false;
         }); 
