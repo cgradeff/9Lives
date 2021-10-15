@@ -93,7 +93,8 @@ export class SceneManager {
         const trees2 = new Trees(this.scene, 2);
         const trees3 = new Trees(this.scene, 3);
         const trees4 = new Trees(this.scene, 4);
-        const subjects = [ghostCat, background, heart, trees1, trees2, trees3, trees4];
+        const trees5 = new Trees(this.scene, 5);
+        const subjects = [ghostCat, background, heart, trees1, trees2, trees3, trees4, trees5];
         return subjects;
     }
 
