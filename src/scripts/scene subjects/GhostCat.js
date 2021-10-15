@@ -25,8 +25,8 @@ export class GhostCat {
         this.scene.add( ghostCat );
 		ghostCat.position.set(0, 2, 0);
 
-	// 	return ghostCat;
-	// }
+		return ghostCat;
+	}
 
 	// loadGhostCat() {
 	// 	let loader = new OBJLoader();
