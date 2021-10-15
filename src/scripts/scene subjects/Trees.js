@@ -3,9 +3,8 @@ import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 
 export class Trees {
-    constructor(scene, pos) {
+    constructor(scene) {
         this.scene = scene;
-        this.pos = pos;
         // this.trees = this.create();
         this.loadTrees();
         this.trees;

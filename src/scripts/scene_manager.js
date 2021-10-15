@@ -5,6 +5,7 @@ import { GhostCat } from './scene subjects/GhostCat';
 import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Trees } from './scene subjects/Trees';
+import { Grass } from './scene subjects/Grass';
 import { Lights } from './scene subjects/Lights';
 import { ThirdPersonCam } from './third_person_cam';
 
@@ -89,12 +90,9 @@ export class SceneManager {
         const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
         const heart = new Heart(this.scene);
-        const trees1 = new Trees(this.scene, 1);
-        const trees2 = new Trees(this.scene, 2);
-        const trees3 = new Trees(this.scene, 3);
-        const trees4 = new Trees(this.scene, 4);
-        const trees5 = new Trees(this.scene, 5);
-        const subjects = [ghostCat, background, heart, trees1, trees2, trees3, trees4, trees5];
+        const forest = new Trees(this.scene);
+        const grass = new Grass(this.scene);
+        const subjects = [ghostCat, background, heart, forest, grass];
         return subjects;
     }
 
