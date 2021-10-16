@@ -2,26 +2,26 @@ import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader.js';
 
 
-export class Grass {
+export class Mushroom {
     constructor(scene) {
         this.scene = scene;
-        this.loadGrass();
-        this.grass;
+        this.loadMushroom();
+        this.mushroom;
     }
 
  
-    loadGrass() {
+    loadMushroom() {
         let loader = new OBJLoader();
 
-        loader.load( '../../../models/grass.obj', (object) => {
+        loader.load( '../../../models/mushrooms.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
-                    child.material = new THREE.MeshPhongMaterial( { color: "#076e38"})
+                    child.material = new THREE.MeshPhongMaterial( { color: "#ffff"})
                     child.castShadow = true;
                 }
             });
             this.scene.add(object);
-            this.grass = object;
+            this.mushroom = object;
             object.scale.multiplyScalar(0.17);
             object.position.set(-19, 0, 50);
         }); 

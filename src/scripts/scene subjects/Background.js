@@ -9,7 +9,7 @@ export class Background {
 
     create() {
         const geometry = new THREE.PlaneGeometry( window.innerWidth, 1000);
-        const material = new THREE.MeshPhongMaterial( { color: '#076151' } );
+        const material = new THREE.MeshPhongMaterial( { color: '#163023' } );
         const ground = new THREE.Mesh( geometry, material );
         ground.material.side = THREE.DoubleSide;
         ground.receiveShadow = true;

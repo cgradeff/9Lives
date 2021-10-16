@@ -6,6 +6,7 @@ import { Background } from './scene subjects/Background';
 import { Heart } from './scene subjects/Heart';
 import { Trees } from './scene subjects/Trees';
 import { Grass } from './scene subjects/Grass';
+import { Mushroom } from './scene subjects/Mushrooms';
 import { Lights } from './scene subjects/Lights';
 import { ThirdPersonCam } from './third_person_cam';
 
@@ -92,7 +93,8 @@ export class SceneManager {
         const heart = new Heart(this.scene);
         const forest = new Trees(this.scene);
         const grass = new Grass(this.scene);
-        const subjects = [ghostCat, background, heart, forest, grass];
+        const mushroom = new Mushroom(this.scene);
+        const subjects = [ghostCat, background, heart, forest, grass, mushroom];
         return subjects;
     }
 

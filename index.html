@@ -25,11 +25,29 @@ is to collect all of your nine ‘lives’ or hearts so that you can come back t
 
 <body>
     <div id="navbar">
-        <img id="heartpic" src="./img/heartpic.png">
-        <div id="heartcount">0</div>
+        <div class='heart-container'>
+            <img id="heartpic" src="./img/heartpic.png">
+            <div id="heartcount">0</div>
+        </div>
         <img id="title" src="./img/title1.png">
-        <a href="https://www.linkedin.com/in/carly-gradeff-62438a1a0/" target="_blank"><img id="linkedin" src="./img/linkedinlogo.png"></a>
-        <a href="https://github.com/cgradeff/9Lives" target="_blank"><img id="github" src="./img/GitHub-Mark-Light-120px-plus.png"></a>
+        <div class="left-nav">
+            <div class="dropdown-container">
+                <img class='dropdown' src="/img/dropdown.png"/>
+                <div class="dropdown-content">
+                        <h3>GOAL</h3>
+                        <p>Find and collect all 9 lives (hearts)</p>
+                        <br>
+                        <h3>HOW TO PLAY</h3>
+                        <p> - Use the arrow keys to move through the forest.</p>
+                        <p> - To collect a life, move over it and press the space bar.</p>
+                        <br>
+                        <br>
+                        <h2>CREATED BY CARLY GRADEFF</h2>
+                </div>
+            </div>
+            <a href="https://github.com/cgradeff/9Lives" target="_blank"><img id="github" src="./img/GitHub-Mark-Light-120px-plus.png"></a>
+            <a href="https://www.linkedin.com/in/carly-gradeff-62438a1a0/" target="_blank"><img id="linkedin" src="./img/linkedinlogo.png"></a>
+        </div>
     </div>
 
     <script src="./dist/main.js"></script>
@@ -42,40 +60,122 @@ is to collect all of your nine ‘lives’ or hearts so that you can come back t
         </div>
     </div> -->
     <style>
-        #linkedin {
+
+        #navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            /* justify-self: center; */
             position: fixed;
+            margin-top: -.5em;
+        }
+
+        .dropdown-content {
+            border: 2px solid white;
+            padding: 1em;
+            border-radius: 5px;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            width: 20%;
+            position: fixed;
+            right: 8%;
+            top: 6.2em;
+            background-color: rgba(255, 255, 255, 0.1);
+            line-height: 1.4em;
+            display: none;
+            font-weight: 350;
+
+        }
+        .dropdown-content h3 {
+            font-size: 18px;
+            font-weight: 650;
+            margin-bottom: .3em;
+            letter-spacing: .5px;
+        }
+
+        .dropdown-content h2 {
+            font-size: 12px;
+            /* font-weight: 600; */
+        }
+
+        .dropdown-container:hover .dropdown-content {
+            display: block;
+        }
+
+        .left-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 13%;
+            padding-right: 3em;
+            margin-top: -.5em;
+        }
+
+        #linkedin {
+            /* position: fixed; */
             height: 35px;
-            top: 5%;
-            right: 7%;
+            padding-left: 1em;
+            /* top: 5%;
+            right: 7%; */
         }
 
         #github {
-            position: fixed;
+            /* position: fixed; */
             height: 35px;
-            top: 5%;
-            right: 3.3%;
+            padding-left: 1em;
+            /* top: 5%;
+            right: 3.3%; */
         }
-        #heartcount {
-            position: fixed;
-            top: 5.8%;
-            left: 8%;
-            font-size: 250%;
-            font-family: 'Courier New', Courier, monospace;
+
+        #linkedin:hover {
+            opacity: .7;
+        }
+
+        #github:hover {
+            opacity: .7;
+        }
+
+        .dropdown {
             color: white;
-            font-weight: bold;
+            height: 40px;
+            padding-left: 1em;
+        }
+
+        .dropdown:hover {
+            opacity: .7;
+        }
+
+        .heart-container {
+            margin-top: -1em;
+            display: flex;
+            justify-content: space-between;
+            width: 8%;
+            align-items: center;
+            padding-left: 2em;
+        }
+
+        #heartcount {
+            font-size: 250%;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;;
+            color: white;
+            font-weight: 450;
         }
         #title {
             height: 150px;
-            position: fixed;
-            top: 0px;
-            left: 40%;
+            /* position: fixed; */
+            /* top: 0px;
+            left: 40%; */
         }
         #heartpic {
             height: 70px;
-            position: fixed;
+            /* position: fixed;
             top: 3.5%;
-            left: 3%;
+            left: 3%; */
         }
+
         body {
             background: url(img/background.png) no-repeat center center;
             background-size: cover;
