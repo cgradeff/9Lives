@@ -48,6 +48,11 @@ export class SceneManager {
         this.thirdPersonCam.update();
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
+        // console.log(this.subjects[2])
+        // if (!this.subjects.heart) {
+        //     // this.subjects[2].heart.rotation.x += 0.01;
+        //     this.subjects[2].heart.rotation.y = 0.01;
+        // }
         // this.subjects[2].heart.rotation.x += 0.01;
         // this.subjects[2].heart.rotation.y += 0.01;
         // error in console being called for the first two itterations of the loop cus heart isn't yet defined
@@ -90,11 +95,19 @@ export class SceneManager {
     createSceneSubjects() {
         const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
-        const heart = new Heart(this.scene);
+        const heart1 = new Heart(this.scene, 1);
+        const heart2 = new Heart(this.scene, 2);
+        const heart3 = new Heart(this.scene, 3);
+        const heart4 = new Heart(this.scene, 4);
+        const heart5 = new Heart(this.scene, 5);
+        const heart6 = new Heart(this.scene, 6);
+        const heart7 = new Heart(this.scene, 7);
+        const heart8 = new Heart(this.scene, 8);
+        const heart9 = new Heart(this.scene, 9);
         const forest = new Trees(this.scene);
         const grass = new Grass(this.scene);
         const mushroom = new Mushroom(this.scene);
-        const subjects = [ghostCat, background, heart, forest, grass, mushroom];
+        const subjects = [ghostCat, background, heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8, heart9, forest, grass, mushroom];
         return subjects;
     }
 

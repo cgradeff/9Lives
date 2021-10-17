@@ -16,7 +16,7 @@ export class Mushroom {
         loader.load( '../../../models/mushrooms.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
-                    child.material = new THREE.MeshPhongMaterial( { color: "#ffff"})
+                    child.material = new THREE.MeshPhongMaterial( { color: "#ffffff"})
                     child.castShadow = true;
                 }
             });
