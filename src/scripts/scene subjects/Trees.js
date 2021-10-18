@@ -31,7 +31,7 @@ export class Trees {
     loadTrees() {
         let loader = new OBJLoader();
 
-        loader.load( '../../../models/forest.obj', (object) => {
+        loader.load( './models/forest.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
                     child.material = new THREE.MeshPhongMaterial( { color: "#075f61"})
