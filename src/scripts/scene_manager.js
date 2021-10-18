@@ -26,6 +26,7 @@ export class SceneManager {
         this.light = new Lights(this.scene);
         this.renderer = this.buildRenderer(this.screenDims);
         this.subjects = this.createSceneSubjects();
+        this.hearts = this.createHearts();
         // this.ghostCatObj = this.subjects[0]
         // console.log(this.subjects[2])
         // // this.ghostCat = this.ghostCatObj['ghostCat']
@@ -95,6 +96,14 @@ export class SceneManager {
     createSceneSubjects() {
         const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
+        const forest = new Trees(this.scene);
+        const grass = new Grass(this.scene);
+        const mushroom = new Mushroom(this.scene);
+        const subjects = [ghostCat, background, forest, grass, mushroom];
+        return subjects;
+    }
+
+    createHearts() {
         const heart1 = new Heart(this.scene, 1);
         const heart2 = new Heart(this.scene, 2);
         const heart3 = new Heart(this.scene, 3);
@@ -104,11 +113,8 @@ export class SceneManager {
         const heart7 = new Heart(this.scene, 7);
         const heart8 = new Heart(this.scene, 8);
         const heart9 = new Heart(this.scene, 9);
-        const forest = new Trees(this.scene);
-        const grass = new Grass(this.scene);
-        const mushroom = new Mushroom(this.scene);
-        const subjects = [ghostCat, background, heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8, heart9, forest, grass, mushroom];
-        return subjects;
+        const hearts = [heart1, heart2, heart3, heart4, heart5, heart6, heart7, heart8, heart9]
+        return hearts;
     }
 
 
@@ -159,25 +165,41 @@ export class SceneManager {
 
     checkCollision() {
         const ghostCatPos = this.subjects[0].ghostCat.position;
-        const heartPos = this.subjects[2].heart.position;
-
+        // const heartPos = this.subjects[2].heart.position;
+        const hearts = this.hearts
+        let collision = null
+        // console.log(hearts)
         // debugger 
-
-        if ((Math.round(ghostCatPos.x) === Math.round(heartPos.x)) && 
+        hearts.forEach((heart) => {
+            // console.log(heart.heart.position)
+            if ((Math.round(ghostCatPos.x) === Math.round(heart.heart.position.x)) && 
             // (Math.round(ghostCatPos.y) === Math.round(heartPos.y)) && 
-            (Math.round(ghostCatPos.z) === Math.round(heartPos.z))) {
-            return true;
+            (Math.round(ghostCatPos.z) === Math.round(heart.heart.position.z))) {
+                collision = heart
+            // return heart;
         }
-        return false;
+        })
+        // console.log(collision)
+        return collision;
     }
 
     pickupHeart() {
-        if (this.checkCollision() && this.checkPickUp) {
-            this.scene.remove(this.subjects[2].heart);
+        let heart = this.checkCollision()
+        // console.log(heart)
+        if ((heart !== null ) && this.checkPickUp) {
+            const heartIdx = this.hearts.indexOf(heart)
+            this.scene.remove(this.hearts[heartIdx].heart);
             
             // increment the heart count
             let currentCount = document.getElementById("heartcount").innerHTML;
             document.getElementById("heartcount").innerHTML = parseInt(currentCount) + 1;
+            this.checkPickUp = false;
         }
-     }
+        this.checkPickUp = false;
+    }
+
+    win() {
+        const currentCount = document.getElementById("heartcount").innerHTML;
+        return parseInt(currentCount) === 2 ? true : false
+    }
 }
