@@ -13,7 +13,7 @@ export class Grass {
     loadGrass() {
         let loader = new OBJLoader();
 
-        loader.load( '../../../models/grass.obj', (object) => {
+        loader.load( './models/grass.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
                     child.material = new THREE.MeshPhongMaterial( { color: "#076e38"})
