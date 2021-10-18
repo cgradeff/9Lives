@@ -27,10 +27,13 @@ export class SceneManager {
         this.renderer = this.buildRenderer(this.screenDims);
         this.subjects = this.createSceneSubjects();
         this.hearts = this.createHearts();
+        this.ghostCat = new GhostCat(this.scene)
         // this.ghostCatObj = this.subjects[0]
-        // console.log(this.subjects[2])
+        // console.log(this.subjects[2].trees)
         // // this.ghostCat = this.ghostCatObj['ghostCat']
-        this.thirdPersonCam = new ThirdPersonCam(this.camera, this.subjects[0].ghostCat);
+        // this.loadThirdCam(this.camera, this.ghostCat)
+        // this.ghostCat.loadGhostCat()
+        this.thirdPersonCam = new ThirdPersonCam(this.camera, this.ghostCat.ghostCat);
         // this.ghostCat = new GhostCat(this.scene, this.camera);
 
         //movement
@@ -42,11 +45,17 @@ export class SceneManager {
         this.render();
     }
 
+    // async loadThirdCam(camera, target)  {
+    //     await this.ghostCat.ghostCat
+    // }
+
     // renders and updates the graphics
     render() {
         requestAnimationFrame(this.render.bind(this));
 
-        this.thirdPersonCam.update();
+        // console.log(this.ghostCat.ghostCat.quaternion)
+
+        this.thirdPersonCam.update(this.ghostCat.ghostCat);
         // document.addEventListener("keydown", this.onDocumentKeyDown(event), false);
         // debugger 
         // console.log(this.subjects[2])
@@ -94,12 +103,12 @@ export class SceneManager {
     }
 
     createSceneSubjects() {
-        const ghostCat = new GhostCat(this.scene);
+        // const ghostCat = new GhostCat(this.scene);
         const background = new Background(this.scene);
         const forest = new Trees(this.scene);
         const grass = new Grass(this.scene);
         const mushroom = new Mushroom(this.scene);
-        const subjects = [ghostCat, background, forest, grass, mushroom];
+        const subjects = [ background, forest, grass, mushroom]; //ghostCat
         return subjects;
     }
 
@@ -143,16 +152,16 @@ export class SceneManager {
 
         switch (event.keyCode) {
             case 38: // down arrow
-                this.subjects[0].ghostCat.position.z += zSpeed;
+                this.ghostCat.ghostCat.position.z += zSpeed;
                 break;
             case 40: // up arrow
-                this.subjects[0].ghostCat.position.z -= zSpeed;
+                this.ghostCat.ghostCat.position.z -= zSpeed;
                 break;
             case 39: // right arrow
-                this.subjects[0].ghostCat.position.x -= xSpeed;
+                this.ghostCat.ghostCat.position.x -= xSpeed;
                 break;
             case 37: // left arrow
-                this.subjects[0].ghostCat.position.x += xSpeed;
+                this.ghostCat.ghostCat.position.x += xSpeed;
                 break;
             case 32: // spacebar
                 // this.subjects[0].ghostCat.position.set(0, 1, 0);
@@ -164,7 +173,7 @@ export class SceneManager {
     }
 
     checkCollision() {
-        const ghostCatPos = this.subjects[0].ghostCat.position;
+        const ghostCatPos = this.ghostCat.ghostCat.position;
         // const heartPos = this.subjects[2].heart.position;
         const hearts = this.hearts
         let collision = null
