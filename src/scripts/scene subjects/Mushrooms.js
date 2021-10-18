@@ -13,7 +13,7 @@ export class Mushroom {
     loadMushroom() {
         let loader = new OBJLoader();
 
-        loader.load( '../../../models/mushrooms.obj', (object) => {
+        loader.load( './models/mushrooms.obj', (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
                     child.material = new THREE.MeshPhongMaterial( { color: "#ffffff"})
