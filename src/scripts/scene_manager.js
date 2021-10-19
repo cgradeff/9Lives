@@ -27,13 +27,7 @@ export class SceneManager {
     this.subjects = this.createSceneSubjects()
     this.hearts = this.createHearts()
     this.ghostCat = new GhostCat(this.scene)
-    // this.ghostCatObj = this.subjects[0]
-    // console.log(this.subjects[2].trees)
-    // // this.ghostCat = this.ghostCatObj['ghostCat']
-    // this.loadThirdCam(this.camera, this.ghostCat)
-    // this.ghostCat.loadGhostCat()
-    this.thirdPersonCam = new ThirdPersonCam(this.camera) //, this.ghostCat.ghostCat
-    // this.ghostCat = new GhostCat(this.scene, this.camera);
+    this.thirdPersonCam = new ThirdPersonCam(this.camera) 
 
     //movement
     this.keyInput()
@@ -44,31 +38,25 @@ export class SceneManager {
     this.render()
   }
 
-  // async loadThirdCam(camera, target)  {
-  //     await this.ghostCat.ghostCat
-  // }
-
   // renders and updates the graphics
   render() {
     requestAnimationFrame(this.render.bind(this))
 
-    // console.log(this.ghostCat.ghostCat.quaternion)
-
-    // this.thirdPersonCam.update(this.ghostCat.ghostCat);
     if (this.ghostCat.ghostCat !== undefined) {
       this.thirdPersonCam.update(this.ghostCat.ghostCat)
     }
 
+    // heart rotation
     if (this.hearts[0].heart !== undefined) {
-      this.hearts[0].heart.rotation.y += 0.015
-      this.hearts[1].heart.rotation.y += 0.015
-      this.hearts[2].heart.rotation.y += 0.015
-      this.hearts[3].heart.rotation.y += 0.015
-      this.hearts[4].heart.rotation.y += 0.015
-      this.hearts[5].heart.rotation.y += 0.015
-      this.hearts[6].heart.rotation.y += 0.015
-      this.hearts[7].heart.rotation.y += 0.015
-      this.hearts[8].heart.rotation.y += 0.015
+      this.hearts[0].heart.rotation.y += 0.01
+      this.hearts[1].heart.rotation.y += 0.01
+      this.hearts[2].heart.rotation.y += 0.01
+      this.hearts[3].heart.rotation.y += 0.01
+      this.hearts[4].heart.rotation.y += 0.01
+      this.hearts[5].heart.rotation.y += 0.01
+      this.hearts[6].heart.rotation.y += 0.01
+      this.hearts[7].heart.rotation.y += 0.01
+      this.hearts[8].heart.rotation.y += 0.01
     }
 
     this.renderer.render(this.scene, this.camera)
@@ -78,8 +66,8 @@ export class SceneManager {
     const scene = new THREE.Scene()
 
     // comment these out to get rid of fog
-    // scene.background = new THREE.Color("#0a1226");
-    // scene.fog = new THREE.Fog('#0a1226', 3, 20);
+    // scene.background = new THREE.Color("#ffffff");
+    // scene.fog = new THREE.Fog('#ffffff', 20, 20);
 
     return scene
   }
@@ -134,11 +122,6 @@ export class SceneManager {
     ]
     return hearts
   }
-
-  // need to change this to actually work
-  // update() {
-  //     this.renderer.render(this.scene, this.camera);
-  // }
 
   // updates the aspect ratio of the camera and the size of the Renderer,
   onWindowResize() {

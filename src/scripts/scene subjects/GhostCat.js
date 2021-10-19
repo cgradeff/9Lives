@@ -31,7 +31,7 @@ export class GhostCat {
 	loadGhostCat() {
 		let loader = new OBJLoader();
 
-        loader.load( '../../../models/ghost1.obj', async (object) => {
+        loader.load( './models/ghost1.obj', async (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
                     child.material = new THREE.MeshPhongMaterial( { color: "#ffff"})
