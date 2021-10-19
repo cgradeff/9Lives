@@ -128,9 +128,9 @@ export class SceneManager {
 
 
     // need to change this to actually work
-    update() {  
-        this.renderer.render(this.scene, this.camera);
-    }
+    // update() {  
+    //     this.renderer.render(this.scene, this.camera);
+    // }
 
     // updates the aspect ratio of the camera and the size of the Renderer,
     onWindowResize() {
@@ -168,7 +168,7 @@ export class SceneManager {
                 this.checkPickUp = true;
                 break;
         }
-        this.render();
+        // this.render();
         this.pickupHeart();
     }
 
