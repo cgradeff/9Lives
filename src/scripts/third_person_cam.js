@@ -2,10 +2,9 @@ import * as THREE from 'three';
 
 
 export class ThirdPersonCam {
-    constructor(camera, target) {
+    constructor(camera) {
         this.camera = camera;
-        this.target = target; // need to set the target to be ghosty
-        debugger
+        // this.target = target; // need to set the target to be ghosty
         this.curretPos = new THREE.Vector3();
         this.currentLookAt = new THREE.Vector3();
     }
@@ -20,7 +19,7 @@ export class ThirdPersonCam {
     // fix lookAt, currently the rotation doesn't work
     calcIdealLookAt(target) {
         const idealLookAt = new THREE.Vector3(0, 10, 50);
-        idealLookAt.applyQuaternion(target.quaternion); // need to define target and firgure out what rotation is 
+        idealLookAt.applyQuaternion(target.quaternion); // need to define target and figure out what rotation is 
         idealLookAt.add(target.position); // figure out setting pos
         return idealLookAt; 
     }
