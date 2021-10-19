@@ -199,10 +199,16 @@ export class SceneManager {
       this.checkPickUp = false
     }
     this.checkPickUp = false
+    if (this.win()) {
+        let modal = document.getElementById("win-modal");
+        let modalBackground = document.getElementById("modal-background");
+        modal.style.display = "flex"
+        modalBackground.style.display = "block"
+    }
   }
 
   win() {
     const currentCount = document.getElementById('heartcount').innerHTML
-    return parseInt(currentCount) === 2 ? true : false
+    return parseInt(currentCount) === 9 ? true : false
   }
 }
