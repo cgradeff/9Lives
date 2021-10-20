@@ -40,7 +40,7 @@ export class Trees {
             });
             this.scene.add(object);
             this.trees = object;
-            object.scale.multiplyScalar(0.17);
+            object.scale.multiplyScalar(0.18);
             object.position.set(-19, 0, 50);
             // object.position.z = this.posObj[this.pos][2];
             // object.position.y = this.posObj[this.pos][1];

@@ -31,17 +31,19 @@ export class GhostCat {
 	loadGhostCat() {
 		let loader = new OBJLoader();
 
-        loader.load( './models/ghost1.obj', async (object) => {
+        loader.load( './models/ghostCat.obj', async (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
-                    child.material = new THREE.MeshPhongMaterial( { color: "#ffffff"})
+                    child.material = new THREE.MeshPhongMaterial( { color: "#fdffdb"})
 					child.castShadow = true;
+					child.material.transparent = true;
+					child.material.opacity = 0.7; 
                 }
             });
             await this.scene.add(object);
             this.ghostCat = object;
-            object.scale.multiplyScalar(0.02);
-            object.position.set(0, 1, 0);
+			object.scale.multiplyScalar(.15);
+            object.position.set(0, .3, 0);
 			object.rotation.set( 0, 0, 0 )
         }, function ( xhr ) {
 

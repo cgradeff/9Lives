@@ -9,7 +9,7 @@ export class ThirdPersonCam {
     }
 
     calcIdealOffset(target) {
-        const idealOffset = new THREE.Vector3(-1, 2, -10);
+        const idealOffset = new THREE.Vector3(0, 3, -9);
         idealOffset.applyQuaternion(target.quaternion); // need to define target and firgure out what rotation is 
         idealOffset.add(target.position); // figure out setting pos
         return idealOffset;

@@ -39,16 +39,13 @@ export class Heart {
         loader.load( './models/heart.obj', async (object) => {
             object.traverse( (child) => {
                 if (child instanceof THREE.Mesh) {
-                    child.material = new THREE.MeshPhongMaterial( { color: "#ff3665"})
+                    child.material = new THREE.MeshPhongMaterial( { color: "#fc3d7d"})
                     child.castShadow = true;
                 }
             });
             await this.scene.add(object);
             this.heart = object;
-            object.scale.multiplyScalar(0.015);
-            // object.position.set(8, 1, 25);
-            // object.castShadow = true;
-            // object.receiveShadow = false;
+            object.scale.multiplyScalar(0.01);
             object.position.z = this.posObj[this.pos][2];
             object.position.y = this.posObj[this.pos][1];
             object.position.x = this.posObj[this.pos][0];
