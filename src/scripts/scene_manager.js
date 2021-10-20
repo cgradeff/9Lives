@@ -48,15 +48,18 @@ export class SceneManager {
 
     // heart rotation
     if (this.hearts[0].heart !== undefined) {
-      this.hearts[0].heart.rotation.y += 0.01
-      this.hearts[1].heart.rotation.y += 0.01
-      this.hearts[2].heart.rotation.y += 0.01
-      this.hearts[3].heart.rotation.y += 0.01
-      this.hearts[4].heart.rotation.y += 0.01
-      this.hearts[5].heart.rotation.y += 0.01
-      this.hearts[6].heart.rotation.y += 0.01
-      this.hearts[7].heart.rotation.y += 0.01
-      this.hearts[8].heart.rotation.y += 0.01
+        this.hearts.forEach( (heartobj) => {
+            heartobj.heart.rotation.y += 0.01
+        })
+    //   this.hearts[0].heart.rotation.y += 0.01
+    //   this.hearts[1].heart.rotation.y += 0.01
+    //   this.hearts[2].heart.rotation.y += 0.01
+    //   this.hearts[3].heart.rotation.y += 0.01
+    //   this.hearts[4].heart.rotation.y += 0.01
+    //   this.hearts[5].heart.rotation.y += 0.01
+    //   this.hearts[6].heart.rotation.y += 0.01
+    //   this.hearts[7].heart.rotation.y += 0.01
+    //   this.hearts[8].heart.rotation.y += 0.01
     }
 
     this.renderer.render(this.scene, this.camera)
@@ -189,8 +192,14 @@ export class SceneManager {
     let heart = this.checkCollision()
     // console.log(heart)
     if (heart !== null && this.checkPickUp) {
+        debugger
       const heartIdx = this.hearts.indexOf(heart)
+
+      // remove heart from scene
       this.scene.remove(this.hearts[heartIdx].heart)
+
+      // remove heart from heart arr
+      this.hearts = this.hearts.slice(0, heartIdx).concat(this.hearts.slice(heartIdx + 1))
 
       // increment the heart count
       let currentCount = document.getElementById('heartcount').innerHTML
