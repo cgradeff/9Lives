@@ -1,5 +1,3 @@
-// fix the update function
-
 import * as THREE from 'three'
 import { GhostCat } from './scene subjects/GhostCat'
 import { Background } from './scene subjects/Background'
@@ -9,8 +7,6 @@ import { Grass } from './scene subjects/Grass'
 import { Mushroom } from './scene subjects/Mushrooms'
 import { Lights } from './scene subjects/Lights'
 import { ThirdPersonCam } from './third_person_cam'
-
-// three js basic set up
 
 export class SceneManager {
   constructor() {
@@ -51,15 +47,6 @@ export class SceneManager {
         this.hearts.forEach( (heartobj) => {
             heartobj.heart.rotation.y += 0.01
         })
-    //   this.hearts[0].heart.rotation.y += 0.01
-    //   this.hearts[1].heart.rotation.y += 0.01
-    //   this.hearts[2].heart.rotation.y += 0.01
-    //   this.hearts[3].heart.rotation.y += 0.01
-    //   this.hearts[4].heart.rotation.y += 0.01
-    //   this.hearts[5].heart.rotation.y += 0.01
-    //   this.hearts[6].heart.rotation.y += 0.01
-    //   this.hearts[7].heart.rotation.y += 0.01
-    //   this.hearts[8].heart.rotation.y += 0.01
     }
 
     this.renderer.render(this.scene, this.camera)
@@ -67,10 +54,6 @@ export class SceneManager {
 
   buildScene() {
     const scene = new THREE.Scene()
-
-    // comment these out to get rid of fog
-    // scene.background = new THREE.Color("#ffffff");
-    // scene.fog = new THREE.Fog('#ffffff', 20, 20);
 
     return scene
   }
@@ -93,12 +76,11 @@ export class SceneManager {
   }
 
   createSceneSubjects() {
-    // const ghostCat = new GhostCat(this.scene);
     const background = new Background(this.scene)
     const forest = new Trees(this.scene)
     const grass = new Grass(this.scene)
     const mushroom = new Mushroom(this.scene)
-    const subjects = [background, forest, grass, mushroom] //ghostCat
+    const subjects = [background, forest, grass, mushroom] 
     return subjects
   }
 
@@ -158,7 +140,6 @@ export class SceneManager {
         this.ghostCat.ghostCat.position.x += xSpeed
         break
       case 32: // spacebar
-        // this.subjects[0].ghostCat.position.set(0, 1, 0);
         this.checkPickUp = true
         break
     }
@@ -168,29 +149,24 @@ export class SceneManager {
 
   checkCollision() {
     const ghostCatPos = this.ghostCat.ghostCat.position
-    // const heartPos = this.subjects[2].heart.position;
     const hearts = this.hearts
     let collision = null
-    // console.log(hearts)
-    // debugger
+
     hearts.forEach((heart) => {
-      // console.log(heart.heart.position)
       if (
         Math.round(ghostCatPos.x) === Math.round(heart.heart.position.x) &&
-        // (Math.round(ghostCatPos.y) === Math.round(heartPos.y)) &&
         Math.round(ghostCatPos.z) === Math.round(heart.heart.position.z)
       ) {
         collision = heart
-        // return heart;
       }
     })
-    // console.log(collision)
+
     return collision
   }
 
   pickupHeart() {
     let heart = this.checkCollision()
-    // console.log(heart)
+
     if (heart !== null && this.checkPickUp) {
         debugger
       const heartIdx = this.hearts.indexOf(heart)

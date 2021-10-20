@@ -8,13 +8,6 @@ export class Trees {
         // this.trees = this.create();
         this.loadTrees();
         this.trees;
-        // this.posObj = {
-        //     1: [20, 0, 10, 0],
-        //     2: [-25, 0, -1, 2.5],
-        //     3: [-18, 0, 15, 1.7],
-        //     4: [2, 0, 33, 1],
-        //     5: [37, 0, 33, 0]
-        // }
     }
 
     // create() {
@@ -42,14 +35,6 @@ export class Trees {
             this.trees = object;
             object.scale.multiplyScalar(0.18);
             object.position.set(-19, 0, 50);
-            // object.position.z = this.posObj[this.pos][2];
-            // object.position.y = this.posObj[this.pos][1];
-            // object.position.x = this.posObj[this.pos][0];
-            // const yDiff = this.posObj[this.pos][3]
-            // object.rotation.set( 0, yDiff, 0 );
-            // object.quaternion.x = this.posObj[this.pos][3]
-            // object.castShadow = true;
-            // object.receiveShadow = false;
         }); 
     }
 }
