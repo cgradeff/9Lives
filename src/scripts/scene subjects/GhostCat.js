@@ -47,7 +47,7 @@ export class GhostCat {
 			object.rotation.set( 0, 0, 0 )
         }, function ( xhr ) {
 
-		console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
+		// console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
 
 	}); 
 	}
