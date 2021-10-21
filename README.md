@@ -6,20 +6,20 @@
 
 ### Background:
 
-This is a third person game called 9Lives. The overall concept is that you are a ghost cat and you are searching for your 9 lives in a forest to bring you back to life. You will be able to move using the arrow keys and you can pick up and drop items using the spacebar. I would ideally like to have three levels of the game, the first in which you are a ghost cat, the second you are a zombie cat and the third you are just a regular (alive) cat. Each level will have a time constraint where you must collect the necessary items before the timer is up or the game ends. The goal of the first level will be to find all of your lives (or hearts) and bring them back to your body. Once your body has all of your lives, you will move onto the next level. For the second level, you will be a zombie cat and you will have to find and collect all of the flowers to “create” a potion to bring you back to life. In this level, you will have the ability to pick up other flowers that will temporarily cause you to not be able to move (affecting the remaining time you have left to complete the level). Once you have collected all the flowers, you will move onto the final level. All that you have to do in this level is find your home and once you arrive there the game is finished.
+This is a third person game called 9Lives. The overall concept is that you are a ghost cat and you are searching for your 9 lives in a forest to bring you back to life. You will be able to move using the arrow keys and you can pick up lives (hearts) by pressing the spacebar. 
 
 ### Functionality & MVPs:
 
 In 9Lives, users will be able to:
-- Start and end the game using a start and end button
+- Restart the game using a button on a modal that pops up when you complete the game
 - Move the character around the forest using arrow keys
-- Pick up and drop items using the space bar
+- Pick lives using the space bar
 
 ### In addition, this project will include:
-- A help button that produces a dropdown textbox containing basic game functions
-- A dropdown list containing links to my information
-- An end game button 
-- A counter relaying the current amount of items collected in the level
+- A button that produces a dropdown textbox containing basic game functions
+- Buttons that link to my personal sites
+- A restart button
+- A counter relaying the current amount of hearts collected
 
 ### Wireframes
 ![Image](./Homepage.png)
@@ -43,5 +43,8 @@ In 9Lives, users will be able to:
 - Thursday Morning: Project Deployment
 
 ### Bonus:
+
+I would ideally like to have three levels of the game, the first in which you are a ghost cat, the second you are a zombie cat and the third you are just a regular (alive) cat. Each level will have a time constraint where you must collect the necessary items before the timer is up or the game ends. The goal of the first level will be to find all of your lives (or hearts) and bring them back to your body. Once your body has all of your lives, you will move onto the next level. For the second level, you will be a zombie cat and you will have to find and collect all of the flowers to “create” a potion to bring you back to life. In this level, you will have the ability to pick up other flowers that will temporarily cause you to not be able to move (affecting the remaining time you have left to complete the level). Once you have collected all the flowers, you will move onto the final level. All that you have to do in this level is find your home and once you arrive there the game is finished.
+
 - Allow the user to customize the color of the ghost cat
 - Add game music and buttons to allow the user to adjust the volume of the music
