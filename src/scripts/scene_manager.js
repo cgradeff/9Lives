@@ -43,10 +43,12 @@ export class SceneManager {
     }
 
     // heart rotation
-    if (this.hearts[0].heart !== undefined) {
+    if ((this.hearts.length !== 0 ) && (this.hearts[0].heart !== undefined)) {
         this.hearts.forEach( (heartobj) => {
             heartobj.heart.rotation.y += 0.01
         })
+    } else {
+      null;
     }
 
     this.renderer.render(this.scene, this.camera)
@@ -168,7 +170,6 @@ export class SceneManager {
     let heart = this.checkCollision()
 
     if (heart !== null && this.checkPickUp) {
-        debugger
       const heartIdx = this.hearts.indexOf(heart)
 
       // remove heart from scene
