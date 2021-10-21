@@ -1,7 +1,5 @@
 # 9Lives
 
-### (Work In Progress)
-
 ### Live Link https://cgradeff.github.io/9Lives/
 
 ### Background:
