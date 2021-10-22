@@ -15,6 +15,58 @@ In 9Lives, users will be able to:
 - Move the character around the forest using arrow keys
 - Pick lives using the space bar
 
+#### Key Inputs
+Users can move the ghost cat around the forest using arrow keys and press the spacebar to pickup lives.
+
+```js
+onKeyDown_(event) {
+		const xSpeed = 0.5;
+		const zSpeed = 0.5;
+    switch (event.keyCode) {
+       case 38: // down arrow
+           this.subjects[0].ghostCat.position.z += zSpeed;
+           break;
+       case 40: // up arrow
+           this.subjects[0].ghostCat.position.z -= zSpeed;
+           break;
+       case 39: // right arrow
+           this.subjects[0].ghostCat.position.x -= xSpeed;
+           break;
+       case 37: // left arrow
+           this.subjects[0].ghostCat.position.x += xSpeed;
+           break;
+       case 32: // spacebar
+           this.checkPickUp = true;
+           break;
+   }
+   this.render();
+   this.pickupHeart();
+}
+ ```
+#### Loaded Custom 3D Objects
+Users can interact with custom 3D objects created using Vectary.
+
+```js
+loadGhostCat() {
+		let loader = new OBJLoader();
+
+        loader.load( './models/ghostCat.obj', async (object) => {
+            object.traverse( (child) => {
+                if (child instanceof THREE.Mesh) {
+                    child.material = new THREE.MeshPhongMaterial( { color: "#fdffdb"})
+					child.castShadow = true;
+					child.material.transparent = true;
+					child.material.opacity = 0.7; 
+                }
+            });
+            await this.scene.add(object);
+            this.ghostCat = object;
+			object.scale.multiplyScalar(.15);
+            object.position.set(0, .3, 0);
+        }); 
+}
+```
+
 ### In addition, this project will include:
 - A button that produces a dropdown textbox containing basic game functions
 - Buttons that link to my personal sites
