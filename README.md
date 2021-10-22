@@ -2,6 +2,8 @@
 
 ### Live Link https://cgradeff.github.io/9Lives/
 
+()[./img/background.png]
+
 ### Background:
 
 This is a third person game called 9Lives. The overall concept is that you are a ghost cat and you are searching for your 9 lives in a forest to bring you back to life. You will be able to move using the arrow keys and you can pick up lives (hearts) by pressing the spacebar. 
