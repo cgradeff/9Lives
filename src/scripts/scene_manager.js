@@ -125,8 +125,8 @@ export class SceneManager {
   }
 
   onKeyDown_(event) {
-    const xSpeed = 0.5
-    const zSpeed = 0.5
+    const xSpeed = 0.6
+    const zSpeed = 0.6
 
     switch (event.keyCode) {
       case 38: // down arrow

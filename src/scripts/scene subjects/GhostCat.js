@@ -44,7 +44,6 @@ export class GhostCat {
             this.ghostCat = object;
 			object.scale.multiplyScalar(.15);
             object.position.set(0, .3, 0);
-			object.rotation.set( 0, 0, 0 )
         }, function ( xhr ) {
 
 		// console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );
