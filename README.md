@@ -2,7 +2,7 @@
 
 ### Live Link https://cgradeff.github.io/9Lives/
 
-()[background.png]
+(image)[img/home.png]
 
 ### Background:
 
